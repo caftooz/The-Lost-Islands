@@ -47,6 +47,8 @@ namespace DarkHorizon
         public static float timeToOverHunger = 60;
         public static float hungerDeath = 60;
 
+        public GameObject diedPanel;
+        public Animator dieAnimation;
 
 
         private void Start()
@@ -195,12 +197,27 @@ namespace DarkHorizon
             staminaBar.fillAmount = currentStamina/100;
         }
 
+
         private void Kill()
         {
+            diedPanel.SetActive(true);
+            dieAnimation.Play("die");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            main.GetComponent<RotatePl>().enabled = false;
+        }
+        public void Respawn()
+        {
+            diedPanel.SetActive(false);
+            main.GetComponent<RotatePl>().enabled = true;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             this.transform.position = respawnPoint.transform.position;
             currentHealth = 100;
             currentSatiety = 100;
             currentStamina = 100;
+            _rb.velocity = Vector3.zero;
+
         }
 
 
