@@ -1,15 +1,12 @@
 using DarkHorizon;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     static public bool isPaused = false;
-    [SerializeField] Canvas canvasPause;
-    [SerializeField] Canvas canvasOptions;
+    [SerializeField] GameObject canvasPause;
+    [SerializeField] GameObject canvasOptions;
 
     [SerializeField] GameObject main;
     public GameObject UIPanel;
@@ -17,8 +14,8 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        canvasPause.enabled = false;
-        canvasOptions.enabled = false;
+        canvasPause.SetActive(false);
+        canvasOptions.SetActive(false);
 
     }
 
@@ -54,7 +51,7 @@ public class MenuManager : MonoBehaviour
 
     private void openPause()
     {
-        canvasPause.enabled = true;
+        canvasPause.SetActive(true);
         main.GetComponent<RotatePl>().enabled = false;
         isPaused = true;
         Cursor.visible = true;
@@ -62,7 +59,7 @@ public class MenuManager : MonoBehaviour
     }
     public void quitPause()
     {
-        canvasPause.enabled = false;
+        canvasPause.SetActive(false);
         main.GetComponent<RotatePl>().enabled = true;
         isPaused = false;
         Cursor.visible = false;
@@ -70,13 +67,13 @@ public class MenuManager : MonoBehaviour
     }
     public void PauseOptions()
     {
-        canvasPause.enabled = false;
-        canvasOptions.enabled = true;
+        canvasPause.SetActive(false);
+        canvasOptions.SetActive(true);
     }
     public void PauseOptionsQuit()
     {
-        canvasPause.enabled = true;
-        canvasOptions.enabled = false;
+        canvasPause.SetActive(true);
+        canvasOptions.SetActive(false);
     }
 
     public void Play()
