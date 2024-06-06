@@ -9,10 +9,15 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public InventorySlot oldSlot;
     private Transform player;
 
+    private RectTransform iconItemScale;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         oldSlot = transform.GetComponentInParent<InventorySlot>();
+
+        iconItemScale = transform.GetComponent<RectTransform>();
+        iconItemScale.localScale = iconItemScale.localScale * 0.8f;
     }
     public void OnDrag(PointerEventData eventData)
     {

@@ -17,8 +17,8 @@ MonoBehaviour:
     type: 3}
   itemName: Apple
   itemDescription: So tasty
-  maxAmount: 10
-  icon: {fileID: 21300000, guid: 004e679cb77f6204da53b06d701c90e1, type: 3}
+  maxAmount: 16
+  icon: {fileID: 21300000, guid: 20d2ce8f06f002c48b8c736a12f81a7f, type: 3}
   isConsumeable: 1
   changeHealth: 0
   changeSatiety: 20

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f96f3e61c089934fa152be9ae1b06fb, type: 3}
+  m_Name: Glass-Cube
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemPrefab: {fileID: 3481595011078136067, guid: 5ff1bd75fcd465644a1491afd5a3a64b,
+    type: 3}
+  itemName: Glass cube
+  itemDescription: It hasn't any color
+  maxAmount: 8
+  icon: {fileID: 21300000, guid: 86fc15541dca73842b29855e4d09e82f, type: 3}
+  isConsumeable: 0
+  changeHealth: 0
+  changeSatiety: 0

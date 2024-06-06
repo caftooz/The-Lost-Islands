@@ -50,6 +50,10 @@ namespace DarkHorizon
         public GameObject diedPanel;
         public Animator dieAnimation;
 
+        private bool isAlive = true;
+
+        [SerializeField] Animator mainAnim;
+
 
         private void Start()
         { 
@@ -71,10 +75,13 @@ namespace DarkHorizon
 
         private void FixedUpdate()
         {
-            hor = Input.GetAxis("Horizontal") * speed;
-            ver = Input.GetAxis("Vertical") * speed;
+            hor = Input.GetAxis("Horizontal");
+            ver = Input.GetAxis("Vertical");
 
-            _rb.velocity = new Vector3(0f,_rb.velocity.y,0f) + transform.forward * ver + transform.right * hor;
+            _rb.velocity = new Vector3(0f,_rb.velocity.y,0f) + transform.forward * ver * speed + transform.right * hor * speed;
+
+            mainAnim.SetFloat("x", hor);
+            mainAnim.SetFloat("y", ver);
 
         }
         private void Update()
@@ -117,7 +124,10 @@ namespace DarkHorizon
             }
             else
             {
-                Kill();
+                if (isAlive)
+                {
+                    Kill();
+                }
             }
         }
         void OnCollisionEnter()
@@ -131,6 +141,8 @@ namespace DarkHorizon
             {
                 isGrounded = false;
                 _rb.AddForce(0,jumpForce,0);
+
+                mainAnim.SetTrigger("Jump");
             }
         }
         
@@ -142,6 +154,8 @@ namespace DarkHorizon
                 col.center = new Vector3(col.center.x, colcent - (col.height/crouchHeight - col.height) / 2f, col.center.z);
                 isCrouch = true;
                 nextPos = new Vector3(0, camPositionY - (col.height / crouchHeight - col.height),0);
+
+                mainAnim.SetBool("isCrouch", isCrouch);
             }
             if (Input.GetKeyUp(KeyCode.LeftControl))
             {
@@ -149,6 +163,8 @@ namespace DarkHorizon
                 col.center = new Vector3(col.center.x, colcent, col.center.z);
                 isCrouch = false;
                 nextPos = new Vector3(0, camPositionY , 0);
+
+                mainAnim.SetBool("isCrouch", isCrouch);
             }
             if(isCrouch)
             {
@@ -163,6 +179,8 @@ namespace DarkHorizon
         {
             speed = Input.GetKey("left shift") && !isCrouch && currentStamina > 1 ? runSpeed : walkSpeed;
             speed = isCrouch ? crouchSpeed : speed;
+
+            mainAnim.SetBool("isRun", Input.GetKey("left shift"));
         }
 
         //----------------------------------------
@@ -200,14 +218,19 @@ namespace DarkHorizon
 
         private void Kill()
         {
+            isAlive = false;
             diedPanel.SetActive(true);
             dieAnimation.Play("die");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             main.GetComponent<RotatePl>().enabled = false;
+
+            mainAnim.SetTrigger("death");
         }
         public void Respawn()
         {
+
+            isAlive = false;
             diedPanel.SetActive(false);
             main.GetComponent<RotatePl>().enabled = true;
             Cursor.visible = false;
@@ -217,6 +240,8 @@ namespace DarkHorizon
             currentSatiety = 100;
             currentStamina = 100;
             _rb.velocity = Vector3.zero;
+
+            mainAnim.SetTrigger("respawn");
 
         }
 
