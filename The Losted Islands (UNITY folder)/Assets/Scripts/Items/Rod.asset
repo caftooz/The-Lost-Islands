@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f96f3e61c089934fa152be9ae1b06fb, type: 3}
+  m_Name: Rod
+  m_EditorClassIdentifier: 
+  itemType: 3
+  itemPrefab: {fileID: 7127791223603908620, guid: 78767502ebcae6344bb63e766e269d1e,
+    type: 3}
+  itemName: rod
+  itemDescription: get fish
+  maxAmount: 1
+  icon: {fileID: 21300000, guid: 66869997af9ffd34fb88deb429dfcf5d, type: 3}
+  isConsumeable: 0
+  changeHealth: 0
+  changeSatiety: 0

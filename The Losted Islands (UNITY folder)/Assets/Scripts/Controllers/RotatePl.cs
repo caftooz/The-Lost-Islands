@@ -14,7 +14,6 @@ namespace DarkHorizon
         Vector2 smoothV;
 
         public Camera cam;
-        public GameObject head;
 
 
         private void FixedUpdate()
@@ -26,7 +25,6 @@ namespace DarkHorizon
             mouseLook += smoothV;
             mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 85f);
             cam.transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-            head.transform.localRotation = Quaternion.AngleAxis(mouseLook.y * 0.6f, Vector3.right);
             transform.localRotation = Quaternion.AngleAxis(mouseLook.x, transform.up);
         }
     }

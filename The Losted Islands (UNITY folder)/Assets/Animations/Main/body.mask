@@ -30,17 +30,17 @@ AvatarMask:
   - m_Path: metarig/spine/spine.001/spine.002
     m_Weight: 1
   - m_Path: metarig/spine/spine.001/spine.002/spine.003
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/breast.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/breast.L/breast.L_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/breast.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/breast.R/breast.R_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L
     m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L
@@ -50,7 +50,7 @@ AvatarMask:
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L_end
     m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R
     m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R
@@ -60,7 +60,7 @@ AvatarMask:
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/hand.R_end
     m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/spine.004
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005
     m_Weight: 0
   - m_Path: metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006

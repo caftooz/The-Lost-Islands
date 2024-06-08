@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a3f1ba504f5d844959c671e32d82bc, type: 3}
+  m_Name: Fish
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemPrefab: {fileID: 5513603758292319803, guid: a9e43eddccabf4149b6287db9f191742,
+    type: 3}
+  itemName: fish
+  itemDescription: eat this
+  maxAmount: 8
+  icon: {fileID: 21300000, guid: fa8ae7f420f37da49963e0fce00dce00, type: 3}
+  isConsumeable: 1
+  changeHealth: 20
+  changeSatiety: 50
