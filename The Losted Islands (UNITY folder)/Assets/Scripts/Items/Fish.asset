@@ -18,7 +18,7 @@ MonoBehaviour:
   itemName: fish
   itemDescription: eat this
   maxAmount: 8
-  icon: {fileID: 21300000, guid: fa8ae7f420f37da49963e0fce00dce00, type: 3}
+  icon: {fileID: 21300000, guid: bb627f16b5572574da434c0d20b54e77, type: 3}
   isConsumeable: 1
   changeHealth: 20
   changeSatiety: 50

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,9 @@ public class SoundManager : MonoBehaviour
 {
     public AudioClip[] sounds; 
     public SoundArrays[] randSound;
-    public AudioSource audioSrc => GetComponent<AudioSource>();
+
+    public AudioSource bgAudioSrc;
+    public AudioSource efAudioSrc;
 
     public Slider bgVolumeSlider;
     public Slider effectsVolumeSlider;
@@ -24,20 +27,22 @@ public class SoundManager : MonoBehaviour
 
     public void Starting()
     {
-        effectsVolume = effectsVolumeSlider.value;
-        bgMusicVolume = bgVolumeSlider.value;
+        efAudioSrc.volume = effectsVolumeSlider.value;
+        bgAudioSrc.volume = bgVolumeSlider.value;
         index = Random.Range(0, randSound[0].soundArray.Length);
-        audioSrc.clip = randSound[0].soundArray[index];
-        audioSrc.volume = bgVolumeSlider.value;
-        audioSrc.Play();
+        bgAudioSrc.clip = randSound[0].soundArray[index];
+        bgAudioSrc.volume = bgVolumeSlider.value;
+        bgAudioSrc.Play();
         StartCoroutine(BgSound(index));
     }
-    public void PlaySound(int i = 0, bool random = false, float volume = 0.0001f, float p1 = 0.9f, float p2 = 1.1f)
+    public void PlaySound(int ind)
     {
-        AudioClip clip = random ? randSound[i].soundArray[Random.Range(0, randSound[i].soundArray.Length)] : sounds[i];
-        audioSrc.pitch = Random.Range(p1, p2);
-        volume = volume == 0.0001f ? effectsVolume : volume;
-        audioSrc.PlayOneShot(clip, volume);
+        efAudioSrc.PlayOneShot(sounds[ind], effectsVolume);
+    }
+
+    public void PlayRandomSound(int ind)
+    {
+        efAudioSrc.PlayOneShot(randSound[ind].soundArray[Random.Range(0, randSound[ind].soundArray.Count())], effectsVolume);
     }
     IEnumerator BgSound(int _index)
     {
@@ -48,21 +53,21 @@ public class SoundManager : MonoBehaviour
             newIndex = Random.Range(0, randSound[0].soundArray.Length);
         }
         index = newIndex;
-        audioSrc.clip = randSound[0].soundArray[index];
-        audioSrc.Play();
+        bgAudioSrc.clip = randSound[0].soundArray[index];
+        bgAudioSrc.Play();
         StartCoroutine(BgSound(index));
     }
 
-    [System.Serializable]
-
-    public class SoundArrays
-    {
-        public AudioClip[] soundArray;
-    }
-
     public void ChangeVolume()
-    {
-        audioSrc.volume = bgVolumeSlider.value;
-        effectsVolume = effectsVolumeSlider.value;
+        {
+            bgAudioSrc.volume = bgVolumeSlider.value;
+            effectsVolume = effectsVolumeSlider.value;
+        }
     }
+
+[System.Serializable]
+
+public class SoundArrays
+{
+        public AudioClip[] soundArray;
 }

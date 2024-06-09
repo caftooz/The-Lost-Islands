@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,7 +18,6 @@ namespace DarkHorizon
         [SerializeField] private float crouchHeight;
         [SerializeField] private float crouchCamSpeed;
         bool isGrounded = false;
-       // [SerializeField] private BoxCollider trigerIsGrounded;
 
         private Rigidbody _rb;
 
@@ -49,8 +49,10 @@ namespace DarkHorizon
 
         public GameObject diedPanel;
         public Animator dieAnimation;
+        public float stepTime;
 
         private bool isAlive = true;
+        public bool canNoise = false;
 
         [SerializeField] Animator mainAnim;
 
@@ -71,6 +73,8 @@ namespace DarkHorizon
             isCrouch = false;
             nextPos = new Vector3(0, camPositionY, 0);
             Starting();
+            stepTime = 0.33f;
+            StartCoroutine(Stepsound(stepTime));
         }
 
         private void FixedUpdate()
@@ -94,6 +98,7 @@ namespace DarkHorizon
             StaminaKeys();
 
             StateControl();
+            ChangeVolume();
 
             V3 = this.transform.position;
             if(V3.y < -30) Kill();
@@ -133,6 +138,11 @@ namespace DarkHorizon
         void OnCollisionEnter()
         {
             isGrounded = true;
+            if (canNoise)
+            {
+                PlaySound(0);
+                canNoise = false;
+            }
         }
 
         private void Jump()
@@ -242,6 +252,17 @@ namespace DarkHorizon
             _rb.velocity = Vector3.zero;
 
             mainAnim.SetTrigger("respawn");
+
+        }
+
+        IEnumerator Stepsound(float _stepTime)
+        {
+            yield return new WaitForSeconds(_stepTime);
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && isGrounded)
+            {
+                PlayRandomSound(1);
+            }
+            StartCoroutine(Stepsound(stepTime));
 
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.Rendering.DebugUI;
 
 public class QuickslotInventory : MonoBehaviour
@@ -13,6 +14,8 @@ public class QuickslotInventory : MonoBehaviour
     public Transform quickslotParent;
 
     public int currentQuickslotID = 0;
+
+    public Player playerS;
 
     public Sprite selectedSprite;
     public Sprite notSelectedSprite;
@@ -103,6 +106,7 @@ public class QuickslotInventory : MonoBehaviour
                 if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.isConsumeable && !InventoryManager.inventoryIsOpened && quickslotParent.GetChild(currentQuickslotID).GetComponent<Image>().sprite == selectedSprite)
                 {
                     ChangeCharacteristics();
+                    playerS.PlaySound(2);
 
                     if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().amount <= 1)
                     {
@@ -126,6 +130,7 @@ public class QuickslotInventory : MonoBehaviour
                     GameObject itemObject = Instantiate(quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.itemPrefab, hand.position, quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.itemPrefab.transform.rotation);
                     itemObject.GetComponent<Rigidbody>().AddForce(player.forward * dropX + Vector3.up * dropY);
                     itemObject.GetComponent<Item>().amount = 1;
+                    playerS.PlaySound(3);
                     switch (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().amount)
                     {
                         case 1:

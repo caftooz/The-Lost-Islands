@@ -10,6 +10,7 @@ public class AnetaBehaviour : MonoBehaviour
     public AudioSource anetaVoice;
     void Start()
     {
+        anetaVoice.mute = true;
         StartCoroutine(Clatter(Random.Range(30, 60)));
     }
 

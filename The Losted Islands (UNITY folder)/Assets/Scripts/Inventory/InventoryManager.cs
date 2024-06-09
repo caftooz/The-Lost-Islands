@@ -9,6 +9,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject UIBG;
     public GameObject main;
 
+    public Player player;
+
     public Transform quickSlotPanel;
     public Transform inventoryPanel;
     public static bool inventoryIsOpened;
@@ -61,6 +63,7 @@ public class InventoryManager : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<Item>() != null)
                 {
+                    player.PlaySound(1);
                     AddItem(hit.collider.gameObject.GetComponent<Item>().item, hit.collider.gameObject.GetComponent<Item>().amount);
                     Destroy(hit.collider.gameObject);
                 }
