@@ -151,7 +151,7 @@ namespace DarkHorizon
             {
                 isGrounded = false;
                 _rb.AddForce(0,jumpForce,0);
-
+                canNoise = true;
                 mainAnim.SetTrigger("Jump");
             }
         }
@@ -187,9 +187,21 @@ namespace DarkHorizon
 
         private void SpeedControl()
         {
-            speed = Input.GetKey("left shift") && !isCrouch && currentStamina > 1 ? runSpeed : walkSpeed;
-            speed = isCrouch ? crouchSpeed : speed;
-
+            if(Input.GetKey("left shift") && !isCrouch && currentStamina > 1)
+            {
+                speed = runSpeed;
+                stepTime = 0.25f;
+            }
+            else if (isCrouch)
+            {
+                speed = crouchSpeed;
+                stepTime = 1;
+            }
+            else
+            {
+                speed = walkSpeed;
+                stepTime = 0.33f;
+            }
             mainAnim.SetBool("isRun", Input.GetKey("left shift"));
         }
 

@@ -46,7 +46,7 @@ public class QuickslotInventory : MonoBehaviour
     void Update()
     {
         float mw = Input.GetAxis("Mouse ScrollWheel");
-        if (mw < -0.1)
+        if (mw > 0.1)
         {
             quickslotParent.GetChild(currentQuickslotID).GetComponent<Image>().sprite = notSelectedSprite;
             if (currentQuickslotID >= quickslotParent.childCount - 1)
@@ -61,7 +61,7 @@ public class QuickslotInventory : MonoBehaviour
 
         }
 
-        if (mw > 0.1)
+        if (mw < -0.1)
         {
             quickslotParent.GetChild(currentQuickslotID).GetComponent<Image>().sprite = notSelectedSprite;
             if (currentQuickslotID <= 0)
@@ -252,6 +252,7 @@ public class QuickslotInventory : MonoBehaviour
 
         if (!isFishing)
         {
+            playerS.PlaySound(4);
             gameObjectRodFloat = Instantiate(rodFloat, hand.position, Quaternion.identity);
             gameObjectRodFloat.GetComponent<Rigidbody>().AddForce(cam.forward * 2000 + Vector3.up * 500);
             gameObjectRodFloat.GetComponent<Fishing>()._fishingPanel = _fishingPanel;
@@ -273,6 +274,7 @@ public class QuickslotInventory : MonoBehaviour
             {
                 isFishing = false;
                 Destroy(gameObjectRodFloat);
+                playerS.PlaySound(6);
                 handItem.GetComponent<LineRenderer>().enabled = false;
 
             }

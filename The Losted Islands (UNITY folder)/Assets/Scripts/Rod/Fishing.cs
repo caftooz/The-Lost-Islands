@@ -13,6 +13,8 @@ public class Fishing : MonoBehaviour
     public GameObject _blue;
     public GameObject _red;
 
+    public Player player;
+
     public float _bluePositionX;
     public Vector3 _redPosition;
 
@@ -31,6 +33,7 @@ public class Fishing : MonoBehaviour
         inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
         QuickslotPanel = GameObject.FindObjectOfType<QuickslotInventory>();
         _waterGO = GameObject.FindWithTag("water");
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
         _red = _fishingPanel.transform.GetChild(0).gameObject;
         _blue = _fishingPanel.transform.GetChild(1).gameObject;
@@ -48,7 +51,11 @@ public class Fishing : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == _waterGO) StartCoroutine(StartFishing());
+        if (collision.gameObject == _waterGO)
+        {
+            StartCoroutine(StartFishing());
+            player.PlaySound(7);
+        }
     }
 
     IEnumerator StartFishing()
@@ -57,10 +64,12 @@ public class Fishing : MonoBehaviour
         GetComponent<Rigidbody>().useGravity = false;
         yield return new WaitForSeconds(Random.Range(5,10));
         StartMinigameFishing();
+        
     }
 
     private void StartMinigameFishing()
-    {
+    {   
+        player.PlaySound(5);
         _isMinigameNow = true;
         _fishingPanel.SetActive(true);
         _red.transform.position = new Vector3(Random.Range(_minPosition.position.x+20, _maxPosition.position.x-20), _red.transform.position.y, _red.transform.position.z);    
