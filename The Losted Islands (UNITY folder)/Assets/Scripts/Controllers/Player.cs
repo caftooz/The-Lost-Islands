@@ -230,7 +230,7 @@ namespace DarkHorizon
         public void Respawn()
         {
 
-            isAlive = false;
+            isAlive = true;
             diedPanel.SetActive(false);
             main.GetComponent<RotatePl>().enabled = true;
             Cursor.visible = false;

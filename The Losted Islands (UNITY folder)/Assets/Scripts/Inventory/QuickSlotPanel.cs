@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class QuickslotInventory : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class QuickslotInventory : MonoBehaviour
 
     public int rodFloatDistance = 1000;
 
-    private bool isFishing = false;
+    public bool isFishing = false;
+    [SerializeField] GameObject _fishingPanel;
 
     private GameObject handItem;
 
@@ -190,18 +192,27 @@ public class QuickslotInventory : MonoBehaviour
             if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item == null)
             {
                 isFishing = false;
+                gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position = new Vector3(gameObjectRodFloat.GetComponent<Fishing>()._bluePositionX, gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position.y, gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position.z);
+                gameObjectRodFloat.GetComponent<Fishing>()._red.transform.position = gameObjectRodFloat.GetComponent<Fishing>()._redPosition;
                 Destroy(gameObjectRodFloat);
+                _fishingPanel.SetActive(false);
             }
             else if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.itemName != "rod")
             {
                 isFishing = false;
+                gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position = new Vector3(gameObjectRodFloat.GetComponent<Fishing>()._bluePositionX, gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position.y, gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position.z);
+                gameObjectRodFloat.GetComponent<Fishing>()._red.transform.position = gameObjectRodFloat.GetComponent<Fishing>()._redPosition;
                 Destroy(gameObjectRodFloat);
+                _fishingPanel.SetActive(false);
             }
             else if ((gameObjectRodFloat.transform.position - handItem.transform.GetChild(3).position).sqrMagnitude > rodFloatDistance)
             {
                 isFishing = false;
+                gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position = new Vector3(gameObjectRodFloat.GetComponent<Fishing>()._bluePositionX, gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position.y, gameObjectRodFloat.GetComponent<Fishing>()._blue.transform.position.z);
+                gameObjectRodFloat.GetComponent<Fishing>()._red.transform.position = gameObjectRodFloat.GetComponent<Fishing>()._redPosition;
                 Destroy(gameObjectRodFloat);
                 handItem.GetComponent<LineRenderer>().enabled = false;
+                _fishingPanel.SetActive(false);
 
             }
 
@@ -233,18 +244,35 @@ public class QuickslotInventory : MonoBehaviour
 
     private void Fishing()
     {
+
         if (!isFishing)
         {
             gameObjectRodFloat = Instantiate(rodFloat, hand.position, Quaternion.identity);
             gameObjectRodFloat.GetComponent<Rigidbody>().AddForce(cam.forward * 2000 + Vector3.up * 500);
+            gameObjectRodFloat.GetComponent<Fishing>()._fishingPanel = _fishingPanel;
             handItem.GetComponent<LineRenderer>().enabled = true;
             isFishing = true;
         }
         else
         {
-            isFishing = false;
-            Destroy(gameObjectRodFloat);
-            handItem.GetComponent<LineRenderer>().enabled = false;
+            StopFishing();
         }
+
+    }
+    public void StopFishing()
+    {
+
+        if (!gameObjectRodFloat.GetComponent<Fishing>()._isMinigameNow)
+        {
+            if (isFishing == true)
+            {
+                isFishing = false;
+                Destroy(gameObjectRodFloat);
+                handItem.GetComponent<LineRenderer>().enabled = false;
+
+            }
+
+        }
+          
     }
 }

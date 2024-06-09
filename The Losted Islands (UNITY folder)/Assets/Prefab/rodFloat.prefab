@@ -75,6 +75,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2165189676126380075}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 569733e8ca8dfa84da96bc3683dcb9bc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3514246126128448669}
   m_SourcePrefab: {fileID: 100100000, guid: 569733e8ca8dfa84da96bc3683dcb9bc, type: 3}
 --- !u!1 &3893581550282849402 stripped
 GameObject:
@@ -131,3 +135,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1787111459094319945, guid: 569733e8ca8dfa84da96bc3683dcb9bc, type: 3}
+--- !u!114 &-3514246126128448669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893581550282849402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75e7de9c1a64d14492e2512d61f07de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waterGO: {fileID: 0}
+  _fishPrefab: {fileID: 5513603758292319803, guid: a9e43eddccabf4149b6287db9f191742,
+    type: 3}
+  _fishingPanel: {fileID: 0}
+  _blue: {fileID: 0}
+  _red: {fileID: 0}
+  _bluePositionX: 0
+  _redPosition: {x: 0, y: 0, z: 0}
+  _isMinigameNow: 0
+  _moveSpeed: 40

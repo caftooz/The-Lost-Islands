@@ -85,7 +85,7 @@ public class InventoryManager : MonoBehaviour
         inventoryIsOpened = !inventoryIsOpened;
     }
 
-    private void AddItem(ItemScriptableObject _item, int _amount)
+    public void AddItem(ItemScriptableObject _item, int _amount)
     {
         foreach(InventorySlot slot in slots)
         {
