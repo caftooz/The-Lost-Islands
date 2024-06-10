@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49432bd1f3763cd45a32c6aafad36ad6, type: 3}
+  m_Name: PalladinSword
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemPrefab: {fileID: 6238063587913676208, guid: 18b463b8b7138744c9d3a506cad8275e,
+    type: 3}
+  itemName: Palladin Sword
+  itemDescription: 
+  maxAmount: 1
+  icon: {fileID: 21300000, guid: cf52ee7ce189b3d4aa9243238023f09c, type: 3}
+  isConsumeable: 0
+  changeHealth: 0
+  changeSatiety: 0
+  damage: 30
+  strenght: 150

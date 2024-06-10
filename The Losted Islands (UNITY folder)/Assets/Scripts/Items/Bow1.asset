@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49432bd1f3763cd45a32c6aafad36ad6, type: 3}
+  m_Name: Bow1
+  m_EditorClassIdentifier: 
+  itemType: 3
+  itemPrefab: {fileID: 1358969283626969448, guid: 03d5dc2b72b15094f87f553d4aa7ee46,
+    type: 3}
+  itemName: Bow1
+  itemDescription: 
+  maxAmount: 1
+  icon: {fileID: 21300000, guid: b5a3c873d513ab641bacc8e11947bff9, type: 3}
+  isConsumeable: 0
+  changeHealth: 0
+  changeSatiety: 0
+  damage: 30
+  strenght: 150
